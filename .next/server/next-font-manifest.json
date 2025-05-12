@@ -1,6 +1,7 @@
 {
   "app": {
-    "[project]/app/auth/login/page": [],
+    "[project]/app/_not-found/page": [],
+    "[project]/app/charts/page": [],
     "[project]/app/controls/page": [],
     "[project]/app/page": []
   },
