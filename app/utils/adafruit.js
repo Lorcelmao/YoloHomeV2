@@ -2,7 +2,7 @@
 
 // Kết nối đến Adafruit IO MQTT
 const AIO_USERNAME = "lorce"; // Tài khoản Adafruit IO
-const AIO_KEY = "YOUR_ADAFRUIT_IO_KEY"; // Thay bằng AIO Key thực tế của bạn khi triển khai
+const AIO_KEY = "aio_HPzh353Oze2dU01cUlDCEf6OpsIo"; // Thay bằng AIO Key thực tế của bạn khi triển khai
 export const AIO_FEEDS = {
   temperature: "lorce/feeds/yolo-home-temperature",
   humidity: "lorce/feeds/yolo-home-humidity",
