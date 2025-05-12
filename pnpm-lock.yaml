@@ -71,6 +71,9 @@ importers:
       tailwindcss:
         specifier: ^4.1.6
         version: 4.1.6
+      yolo:
+        specifier: 'file:'
+        version: file:(socks@2.8.4)
 
 packages:
 
@@ -1303,6 +1306,9 @@ packages:
     resolution: {integrity: sha512-YgvUTfwqyc7UXVMrB+SImsVYSmTS8X/tSrtdNZMImM+n7+QTriRXyXim0mBrTXNeqzVF0KWGgHPeiyViFFrNDw==}
     engines: {node: '>=18'}
 
+  'yolo@file:':
+    resolution: {directory: '', type: directory}
+
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
@@ -2491,3 +2497,45 @@ snapshots:
   ws@8.18.2: {}
 
   yallist@5.0.0: {}
+
+  yolo@file:(socks@2.8.4):
+    dependencies:
+      '@tailwindcss/postcss': 4.1.6
+      autoprefixer: 10.4.21(postcss@8.5.3)
+      axios: 1.9.0
+      bcryptjs: 3.0.2
+      chart.js: 4.4.9
+      express: 5.1.0
+      jose: 6.0.11
+      mongoose: 8.14.2(socks@2.8.4)
+      mqtt: 5.13.0
+      next: 15.3.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      postcss: 8.5.3
+      prop-types: 15.8.1
+      react: 19.1.0
+      react-chartjs-2: 5.3.0(chart.js@4.4.9)(react@19.1.0)
+      react-dom: 19.1.0(react@19.1.0)
+      react-helmet: 6.1.0(react@19.1.0)
+      react-hot-toast: 2.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react-icons: 5.5.0(react@19.1.0)
+      react-toastify: 11.0.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      socket.io: 4.8.1
+      tailwindcss: 4.1.6
+    transitivePeerDependencies:
+      - '@aws-sdk/credential-providers'
+      - '@babel/core'
+      - '@mongodb-js/zstd'
+      - '@opentelemetry/api'
+      - '@playwright/test'
+      - babel-plugin-macros
+      - babel-plugin-react-compiler
+      - bufferutil
+      - debug
+      - gcp-metadata
+      - kerberos
+      - mongodb-client-encryption
+      - sass
+      - snappy
+      - socks
+      - supports-color
+      - utf-8-validate
