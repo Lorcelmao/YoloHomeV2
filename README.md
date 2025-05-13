@@ -51,18 +51,3 @@ npm install
 # Chạy ứng dụng
 npm run dev
 ```
-
-## API Credentials
-
-Dự án kết nối với Adafruit MQTT với các thông tin sau:
-- Username: lorce
-- Feeds:
-  - Nhiệt độ: lorce/feeds/yolo-home-temperature
-  - Độ ẩm: lorce/feeds/yolo-home-humidity
-  - Ánh sáng: lorce/feeds/yolo-home-light
-  - Đèn: lorce/feeds/yolo-home-led
-  - Quạt: lorce/feeds/yolo-home-fan
-
-## Đóng góp
-
-Mọi đóng góp đều được đánh giá cao. Cảm ơn bạn đã quan tâm đến dự án Yolo:Home!
