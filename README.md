@@ -7,7 +7,7 @@ Yolo:Home là một ứng dụng web hiện đại để giám sát và điều 
 ## Tính năng chính
 
 - **Dashboard:** Hiển thị thông tin thời tiết và dữ liệu cảm biến theo thời gian thực
-- **Biểu đồ:** Phân tích dữ liệu theo nhiệt độ, độ ẩm và ánh sáng với nhiều khung thời gian
+- **Biểu đồ:** Hiển thị dữ liệu theo nhiệt độ, độ ẩm và ánh sáng với nhiều khung thời gian
 - **Điều khiển thiết bị:** Điều khiển đèn và quạt từ xa
 - **Hệ thống xác thực:** Đăng nhập/đăng ký người dùng để bảo vệ dữ liệu
 
@@ -51,18 +51,3 @@ npm install
 # Chạy ứng dụng
 npm run dev
 ```
-
-## API Credentials
-
-Dự án kết nối với Adafruit MQTT với các thông tin sau:
-- Username: lorce
-- Feeds:
-  - Nhiệt độ: lorce/feeds/yolo-home-temperature
-  - Độ ẩm: lorce/feeds/yolo-home-humidity
-  - Ánh sáng: lorce/feeds/yolo-home-light
-  - Đèn: lorce/feeds/yolo-home-led
-  - Quạt: lorce/feeds/yolo-home-fan
-
-## Đóng góp
-
-Mọi đóng góp đều được đánh giá cao. Cảm ơn bạn đã quan tâm đến dự án Yolo:Home!
