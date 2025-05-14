@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import SensorCard from "./components/SensorCard";
 import Navigation from "./components/Navigation";
 import Temperature from "./public/icons/temperature.svg";
@@ -9,7 +11,8 @@ import Light from "./public/icons/light.svg";
 import Water from "./public/icons/water.svg";
 import Weather from "./public/icons/weather.svg";
 import { connectToAdafruit, onTemperatureChange, onHumidityChange, onLightChange, getCurrentData } from "./utils/adafruit";
-import { getCurrentUser } from "./utils/auth";
+import { getCurrentUser, logout, isAuthenticated } from "./utils/auth";
+
 // Hàm lấy ngày hiện tại
 const getCurrentDate = () => {
   const date = new Date();
@@ -72,6 +75,10 @@ const getWeatherDescription = (code) => {
 };
 
 function Home() {
+  // Thêm state cho menu user
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const router = useRouter(); // Import useRouter từ next/navigation
+
   const [location, setLocation] = useState("Đang lấy vị trí...");
   const [weather, setWeather] = useState({ temp: "...", description: "Đang tải" });
   const [sensorData, setSensorData] = useState({
@@ -81,6 +88,18 @@ function Home() {
   });
   const [connectionStatus, setConnectionStatus] = useState(false);
   const [user, setUser] = useState(null);
+  
+  // Thêm hàm xử lý đăng xuất và hiển thị menu
+  const handleLogout = () => {
+    logout();
+    setUser(null);
+    router.push("/auth/login");
+  };
+
+  const toggleUserMenu = () => {
+    setShowUserMenu(prev => !prev);
+  };
+
   // Kết nối đến Adafruit và lắng nghe dữ liệu
   useEffect(() => {
     const currentUser = getCurrentUser();
@@ -163,8 +182,56 @@ function Home() {
     <main className="bg-gray-50 min-h-screen pb-24">
       {/* Header */}
       <header className="bg-[#2E59BE] text-white p-4">
-        <div className="container mx-auto">
-          <h1 className="text-3xl font-poppins-bold text-center">Yolo:Home</h1>
+        <div className="container mx-auto flex justify-between items-center">
+          {/* Div trống để căn chỉnh tiêu đề vào giữa */}
+          <div className="w-10 md:w-24"></div>
+          
+          {/* Tiêu đề ở giữa */}
+          <h1 className="text-3xl font-poppins-bold">Yolo:Home</h1>
+          
+          {/* Profile button ở bên phải */}
+          {user ? (
+            <div className="relative profile-menu">
+              <div
+                className="cursor-pointer flex items-center gap-2"
+                onClick={toggleUserMenu}
+              >
+                <span className="hidden sm:inline">{user.name}</span>
+                <div className="w-10 h-10 rounded-full bg-blue-400 flex items-center justify-center text-white font-medium border-2 border-white">
+                  {user.name.charAt(0).toUpperCase()}
+                </div>
+              </div>
+              
+              {/* User menu dropdown */}
+              {showUserMenu && (
+                <div className="absolute right-0 mt-2 bg-white rounded-lg shadow-lg z-50 w-48 py-2">
+                  <div className="px-4 py-2 border-b border-gray-100">
+                    <p className="font-poppins-medium text-gray-800">{user?.name || "Khách"}</p>
+                    <p className="text-xs text-gray-500">{user?.email || ""}</p>
+                  </div>
+                  <ul>
+                    <li>
+                      <button
+                        onClick={handleLogout}
+                        className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                      >
+                        Đăng xuất
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link href="/auth/login">
+              <div className="flex items-center gap-2 text-white hover:text-blue-100">
+                <span className="hidden sm:inline">Đăng nhập</span>
+                <div className="w-10 h-10 rounded-full bg-blue-400 flex items-center justify-center border-2 border-white">
+                  <span>?</span>
+                </div>
+              </div>
+            </Link>
+          )}
         </div>
       </header>
 
