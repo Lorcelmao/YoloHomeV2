@@ -9,7 +9,7 @@ import Light from "./public/icons/light.svg";
 import Water from "./public/icons/water.svg";
 import Weather from "./public/icons/weather.svg";
 import { connectToAdafruit, onTemperatureChange, onHumidityChange, onLightChange, getCurrentData } from "./utils/adafruit";
-
+import { getCurrentUser } from "./utils/auth";
 // Hàm lấy ngày hiện tại
 const getCurrentDate = () => {
   const date = new Date();
@@ -80,9 +80,12 @@ function Home() {
     light: "--"
   });
   const [connectionStatus, setConnectionStatus] = useState(false);
-
+  const [user, setUser] = useState(null);
   // Kết nối đến Adafruit và lắng nghe dữ liệu
   useEffect(() => {
+    const currentUser = getCurrentUser();
+    setUser(currentUser);
+    
     const initConnection = async () => {
       const connected = await connectToAdafruit();
       setConnectionStatus(connected);
@@ -170,7 +173,9 @@ function Home() {
         <div className="mb-8 bg-white rounded-2xl shadow-lg p-6">
           <div className="flex justify-between items-center">
             <div>
-              <h2 className="text-2xl font-poppins-semi-bold">Xin chào!</h2>
+              <h2 className="text-2xl font-poppins-semi-bold">
+                {user ? `Xin chào, ${user.name}!` : 'Xin chào!'}
+              </h2>
               <p className="text-gray-600">{getCurrentDate()}</p>
               <p className="text-gray-600">{location}</p>
               <p className="mt-2 text-sm">
