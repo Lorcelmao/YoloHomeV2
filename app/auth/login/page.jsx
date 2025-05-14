@@ -280,7 +280,7 @@ export default function Login() {
             </div>
 
             <div className="mt-4 text-center text-xs text-gray-500">
-              <p>Tài khoản demo: <span className="font-bold">demo123</span> (mật khẩu bất kỳ)</p>
+              {/* <p>Tài khoản demo: <span className="font-bold">demo123</span> (mật khẩu bất kỳ)</p> */}
             </div>
           </div>
         </form>

@@ -64,9 +64,16 @@ const Navigation = () => {
           <Link href="/">
             <div className={`flex flex-col items-center ${isActive("/") ? "text-[#2E59BE]" : "text-gray-400"}`}>
               <div className={`p-3 rounded-full ${isActive("/") ? "bg-blue-100" : "bg-gray-100"}`}>
-                <Image src={Home} alt="Home" width={22} height={22} />
+                {/* <Image src={Home} alt="Home" width={22} height={22} /> */}
+                <Image 
+                  src={Home} 
+                  alt="Home" 
+                  width={isActive("/") ? 26 : 22} 
+                  height={isActive("/") ? 26 : 22} 
+                  className={isActive("/") ? "filter brightness-0 invert" : ""} 
+                />
               </div>
-              <span className="text-sm mt-1 font-poppins-medium">Dashboard</span>
+              <span className="text-sm mt-1 font-poppins-medium">Thông tin</span>
             </div>
           </Link>
 
@@ -75,7 +82,7 @@ const Navigation = () => {
               <div className={`p-3 rounded-full ${isActive("/charts") ? "bg-blue-100" : "bg-gray-100"}`}>
                 <Image src={Chart} alt="Charts" width={22} height={22} />
               </div>
-              <span className="text-sm mt-1 font-poppins-medium">Charts</span>
+              <span className="text-sm mt-1 font-poppins-medium">Biểu đồ</span>
             </div>
           </Link>
 
@@ -84,7 +91,7 @@ const Navigation = () => {
               <div className={`p-3 rounded-full ${isActive("/controls") ? "bg-blue-100" : "bg-gray-100"}`}>
                 <Image src={Control} alt="Controls" width={22} height={22} />
               </div>
-              <span className="text-sm mt-1 font-poppins-medium">Controls</span>
+              <span className="text-sm mt-1 font-poppins-medium">Điều khiển</span>
             </div>
           </Link>
 
